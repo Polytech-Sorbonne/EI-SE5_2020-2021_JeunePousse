@@ -51,6 +51,7 @@ CREATE TABLE plant (
   PlantReference INTEGER,
   RoomReference INTEGER,
   KitReference INTEGER,
+  PortCOM INTEGER,
   DateInsertion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (PlantReference) REFERENCES plantreference(id),
   FOREIGN KEY (RoomReference) REFERENCES room(id),
