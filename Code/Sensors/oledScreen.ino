@@ -1,25 +1,37 @@
-// Librairie pour l'afficheur OLED
-// https://github.com/greiman/SSD1306Ascii
+//https://randomnerdtutorials.com/esp32-ssd1306-oled-display-arduino-ide/
+/*********
+  Rui Santos
+  Complete project details at https://randomnerdtutorials.com  
+*********/
 
-#include "SSD1306Ascii.h"
-#include "SSD1306AsciiAvrI2c.h"
- 
-#define I2C_ADDRESS 0x3C // utiliser le code scanner i2c pour trouvr l'adresse de l'écran
- 
-SSD1306AsciiAvrI2c oled;
- 
+#include <Wire.h>
+#include <Adafruit_GFX.h>
+#include <Adafruit_SSD1306.h>
+
+#define SCREEN_WIDTH 128 // OLED display width, in pixels
+#define SCREEN_HEIGHT 64 // OLED display height, in pixels
+
+// Declaration for an SSD1306 display connected to I2C (SDA, SCL pins)
+Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1);
+
 void setup() {
- 
-  oled.begin(&amp;Adafruit128x64, I2C_ADDRESS);
-  oled.setFont(Adafruit5x7);  
-  oled.clear();
-  oled.set2X();
-  oled.println("Test ");
-  oled.set1X();
-  oled.println("test ecran oled");
-  oled.println("JEUNE POUSSE");
- 
+  Serial.begin(115200);
+
+  if(!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) { // Address 0x3D for 128x64
+    Serial.println(F("SSD1306 allocation failed"));
+    for(;;);
+  }
+  delay(2000);
+  display.clearDisplay();
+
+  display.setTextSize(1);
+  display.setTextColor(WHITE);
+  display.setCursor(0, 10);
+  // Display static text
+  display.println("Walid le plus beau!");
+  display.display(); 
 }
+
 void loop() {
- 
+  
 }
