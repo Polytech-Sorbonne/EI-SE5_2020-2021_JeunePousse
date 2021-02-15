@@ -9,8 +9,8 @@
 #include "SSD1306AsciiAvrI2c.h"
 ///////////////////////////////////
 #define SOIL_SENSOR_PIN 7
-#define Broche_Echo 7 			// Broche Echo du HC-SR04 sur D7
-#define Broche_Trigger 8    // Broche Trigger du HC-SR04 sur D8
+#define Broche_Echo 25 			// Broche Echo du HC-SR04 sur D25
+#define Broche_Trigger 33    // Broche Trigger du HC-SR04 sur D33
 #define DHTPIN 4
 #define DHTTYPE DHT22
 ///////////////////////////////////
