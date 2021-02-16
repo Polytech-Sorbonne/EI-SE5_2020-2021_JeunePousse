@@ -47,13 +47,14 @@ const int reference_product_number = 0xA7C789E4563F;
 
 int server_general_portCOM = 8888;
 int server_own_portCOM;
-const char* SERVER_URL = "localhost://";
+const char* SERVER_URL = "http://localhost:";
 
 char SERVER_LINK[80];
 
 struct post_commands{
   const char *first_connexion = "first_connexion";
-  const char *value = "value"; //envoyer les mesures
+  const char *kit = "kit_connexion"
+  const char *value = "add_measure"; //envoyer les mesures
   const char *full_value = "full_value"; //envoyer les mesures + valeur des actionneurs
 };
 struct server_response{
@@ -108,7 +109,11 @@ byte get_i2c_address(); //Pas utile selon moi
 void ecran(char* name, float value);
 void setup_wifi();
 
+int post_kit_connexion();
 
+//Données envoyées par le serveur lors de la première connection
+char* reference = "RefTest";
+char* nom_kit = "KitDemo"
 
 void setup()
 {
@@ -130,7 +135,7 @@ void setup()
     while (1);
   }
   Serial.println("Sensor luminosity found");
-     
+
   veml.setGain(VEML7700_GAIN_1);
   veml.setIntegrationTime(VEML7700_IT_800MS);
   Serial.print(F("Gain: "));
@@ -171,9 +176,9 @@ void setup()
   waterFlow = 0;
   attachInterrupt(0, pulse, RISING);  //DIGITAL Pin 2: Interrupt 0
   //setup all
-  if(first_connection_to_server() != 0)
-  {
+  if(post_kit_connexion() != 0){
     //ERREUR
+    Serial.println(" Erreur verifier\n");
   }
 }
 
@@ -185,8 +190,8 @@ void loop()
     m.Temperature = dht.readTemperature();
     m.Humidity = dht.readHumidity();
     m.GroundQuality = get_moisture();
-    m.WaterLevel = A COMPLETER;
-    m.Luminosity = A COMPLETER;
+    m.WaterLevel = 0.5; //A COMPLETER;
+    m.Luminosity = get_luminosity();//A COMPLETER;
     StaticJsonDocument<200> response = send_values();
     if(response.isNULL()){
       //ERREUR
@@ -236,6 +241,39 @@ void loop()
   }
 }
 
+int post_kit_connexion(){
+
+     if (http.run() == WL_CONNECTED) {
+        HTTPClient http;
+
+        sprintf(SERVER_LINK, "%s%d/%s", SERVER_URL, server_general_portCOM, p.kit_connexion);
+        http.begin(SERVER_LINK);
+        Serial.println("%s", SERVER_LINK);
+        http.addHeader("Content-Type", "application/json");
+
+        StaticJsonDocument<200> doc;
+        doc['Reference'] = reference;
+        doc['kit_name'] = nom_kit;
+
+        String json_body;
+        serializeJson(doc, json_body);
+        int httpResponseCode = http.POST(json_body);
+
+        if(httpResponseCode > 0){
+
+          String response = http.getString();
+          deserializeJson(doc, response);
+
+          //on met a jour le port de communication propre a ce systeme
+          server_own_portCOM = atoi(doc["PortCOM"]);
+          http.end();
+          return 0;
+        }
+    }
+    http.end();
+    return 1;
+}
+
 StaticJsonDocument<200> send_values()
 {
   if (http.run() == WL_CONNECTED) {
@@ -243,6 +281,7 @@ StaticJsonDocument<200> send_values()
     HTTPClient http;
 
     sprintf(SERVER_LINK, "%s%d/%s", SERVER_URL, server_own_portCOM, p.value);
+    Serial.println(SERVER_LINK)
     http.begin(SERVER_LINK);
     http.addHeader("Content-Type", "application/json");
 
@@ -466,18 +505,18 @@ float get_humidity()
 
 float get_distance()
 {
-  // Debut de la mesure avec un signal de 10 µS applique sur TRIG 
-  digitalWrite(Broche_Trigger, LOW);    // On efface l'etat logique de TRIG 
+  // Debut de la mesure avec un signal de 10 µS applique sur TRIG
+  digitalWrite(Broche_Trigger, LOW);    // On efface l'etat logique de TRIG
   delayMicroseconds(2);
-  digitalWrite(Broche_Trigger, HIGH);   // On met la broche TRIG a "1" pendant 10µS 
+  digitalWrite(Broche_Trigger, HIGH);   // On met la broche TRIG a "1" pendant 10µS
   delayMicroseconds(10);
-  digitalWrite(Broche_Trigger, LOW);    // On remet la broche TRIG a "0" 
+  digitalWrite(Broche_Trigger, LOW);    // On remet la broche TRIG a "0"
 
   // On mesure combien de temps le niveau logique haut est actif sur ECHO //
   Duree = pulseIn(Broche_Echo, HIGH);
 
-  // Calcul de la distance grace au temps mesure 
-  Distance = Duree*0.034/2; // 
+  // Calcul de la distance grace au temps mesure
+  Distance = Duree*0.034/2; //
 
   // Verification si valeur mesuree dans la plage //
   if (Distance >= MesureMaxi || Distance <= MesureMini)
@@ -488,16 +527,15 @@ float get_distance()
   return Distance;
 }
 
-float get_luminosity()
-{
+float get_luminosity(){
   uint16_t irq = veml.interruptStatus();
   if (irq & VEML7700_INTERRUPT_LOW)
   {
-    Serial.println("** Low threshold"); 
+    Serial.println("** Low threshold");
   }
   if (irq & VEML7700_INTERRUPT_HIGH)
   {
-    Serial.println("** High threshold"); 
+    Serial.println("** High threshold");
   }
   delay(500);
 
@@ -561,7 +599,7 @@ void ecran(char* name, float value)
   display.setCursor(0, 10);
   // Display static text
   display.println(name, " : %f", value);
-  display.display(); 
+  display.display();
 }
 
 void setup_wifi(){
