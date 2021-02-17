@@ -1,4 +1,4 @@
-//Branchement, rouge = VIN, noir = GND et jaune = D2
+//Branchement, rouge = VIN, noir = GND et jaune = GPIO34 +pull up 10k
 
 /***************************************************
  This example reads Water flow sensor Sensor.
