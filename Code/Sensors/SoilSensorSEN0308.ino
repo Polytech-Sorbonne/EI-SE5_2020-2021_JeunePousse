@@ -1,5 +1,6 @@
 /* Inspiré de https://create.arduino.cc/projecthub/hubmartin/soil-sensor-with-arduino-esp8266-esp32-2bc942
  * VOIR RESISTANTCE EN PULL UP DE 4.7 kOhms A LA PIN VCC
+ A REGARDER, LIEN D'APOLLINE : https://wiki.dfrobot.com/Waterproof_Capacitive_Soil_Moisture_Sensor_SKU_SEN0308#target_3
 
 Soil Moisture Sensor
 ====================
