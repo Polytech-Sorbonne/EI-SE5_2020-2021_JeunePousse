@@ -32,8 +32,8 @@ long Distance;
 const int PINPOMPE = 12;
 const int PINLED = 13;
 ///////////////////////////////////
-const char *AP_SSID = "iPhoneY";
-const char *AP_PWD = "eise2020";
+const char *AP_SSID = "SSID";
+const char *AP_PWD = "PASSWORD";
 
 HTTPClient http;
 
