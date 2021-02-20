@@ -49,18 +49,18 @@ The server has two objectives :
 #### Sign up and sign in
 Before using a module, you need to create an user account. By creating this, you will also indicate all the data related to your home including your rooms. After signing up, the tables home, room, and user will be updated by the server from the website REST posted data.
 
-![alt text](https://github.com/Polytech-Sorbonne/EI-SE5_2020-2021_JeunePousse/blob/main/EI-SE5_2020-2021_JeunePousse/Resources/Connexion_page.png "Connexion Page screenshot")
+![alt text](https://github.com/Polytech-Sorbonne/EI-SE5_2020-2021_JeunePousse/blob/main/Resources/Connexion_page.png "Connexion Page screenshot")
 
-![alt text](https://github.com/Polytech-Sorbonne/EI-SE5_2020-2021_JeunePousse/blob/main/EI-SE5_2020-2021_JeunePousse/Resources/Inscription_partie1.png "Subcription part 1 Page screenshot")
+![alt text](https://github.com/Polytech-Sorbonne/EI-SE5_2020-2021_JeunePousse/blob/main/Resources/Inscription_partie1.png "Subcription part 1 Page screenshot")
 
-![alt text](https://github.com/Polytech-Sorbonne/EI-SE5_2020-2021_JeunePousse/blob/main/EI-SE5_2020-2021_JeunePousse/Resources/Inscription_partie1.png "Subcription part 1 Page screenshot")
+![alt text](https://github.com/Polytech-Sorbonne/EI-SE5_2020-2021_JeunePousse/blob/main/Resources/Inscription_partie1.png "Subcription part 1 Page screenshot")
 
 
 Then, you will be able to connect to your account with your email and password.
 
 #### Dashboard page
 
-![alt text](https://github.com/Polytech-Sorbonne/EI-SE5_2020-2021_JeunePousse/blob/main/EI-SE5_2020-2021_JeunePousse/Resources/Dashboard.png "Dashboard")
+![alt text](https://github.com/Polytech-Sorbonne/EI-SE5_2020-2021_JeunePousse/blob/main/Resources/Dashboard.png "Dashboard")
 
 After connecting, the server handles a REST GET request from the connection website page and it loads your dashboard by getting your various rooms and all the plants in each room from the database.
 A navigation bar allows the user to move to the option page and to log out.
@@ -73,7 +73,7 @@ On the dashboard, the data are organised as follows :
 
 #### Option page
 
-![alt text](https://github.com/Polytech-Sorbonne/EI-SE5_2020-2021_JeunePousse/blob/main/EI-SE5_2020-2021_JeunePousse/Resources/Options.png "Options")
+![alt text](https://github.com/Polytech-Sorbonne/EI-SE5_2020-2021_JeunePousse/blob/main/Resources/Options.png "Options")
 
 The option page offers the user's data :
 * about him
