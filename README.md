@@ -85,7 +85,31 @@ After this, the user clicks on the button and the website sends to the server a 
 ##### Adding a plant
 When a user get a kit (module composed of a microcontroller, sensors and actuators), the module's screen will display the reference module. Then, the user have just to write this reference, he selects in which of his rooms the plant is located and he also selects the type of plant that the module will monitor. By clicking on the button, the serer receives a REST POST request from the website with these data. Then the server updates the plant's database identified by this reference. It updates the fields related to the type of plant and the plant location in the house.
 
+
+
 #### Website role
 The website is here to display user's modules measures, to aware the user of the ideal constants for his plants, to have a look of the data the sql database have about him. This is also the place where the user can configure a new module he bought. Finally, the only one action that the user can have on its modules is to indicates he will be far from home for a long time (on vacation for example). By indicating this to the website, its modules bahvior will be able to adapt their monitoring to this. The user does not have more to care about. In fact, the server and the modules do everything else for him.
 
+
+
+
+### Server for plant monitoring
+In addition to website generating, the server also monitor all plants.
+The server receives 2 differents POST from modules. Each module discuss with the server through an unique communication port in order to allow multiple threaded connections from the server.
+#### First connection POST
+When a module is connected to the current, it connects to the internet and directly sends a REST POST request to the server on a general communication port.
+It sends its module's unique reference and the kit name which composed it.
+By receiving this REST POST request, the server will check in the sql database if a "plant" with the same unique reference exists.
+1. If it exists, the server responds to this REST POST request with the communication port already affected to this "plant" before.
+2. If it is not in the sql databse, the server will create a "plant" table for this new module by affecting a unique new communication port. It also creates all sensors and actuators related to the kit mentionned by the module. The added "plant" table, will be initialized as a "non user affected" plant. In fact, room reference, functionnal mode and plant reference are initialized at '-1'. These fields are updated when the user add the plant from its reference on the option website page. Then th server responds to the module by sending it a REST POST request with the new affected unique communication port.
+
+By receiving the server's response, the module redefined its communication port as the one returns by the server.
+
+#### Measure POST
+After doing the previous step, the module get measures from all its sensors and actuators and then send these to the server as a REST POST request. By receiving this, the server get all the ideal constants related to this plant in "reference plant" table. Then it compares module's sended measures to these ideal constants and defined "corrections" for the module. As a response, the server sends a REST POST request to the module with these corrections.
+These are about indications for the module to dispaly on its screen about the temperature, the humidity and the soil humidity. It also indicated if lights need to be switch on by the module or how much it have to irrigates.
+
+
+
+## Hardware part
 
