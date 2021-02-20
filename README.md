@@ -66,8 +66,8 @@ INSERER IMAGE OPTION
 
 The option page offers the user's data :
 * about him
-* of plants home
-* of plants rooms
+* of his home
+* of his rooms
 * of his plants
 
 As a consequence whren the server received REST GET request defined as getting the option page, it loads all the data mentionned above from the sql database. Moreover, this website page, allows the user to indicates if his attend to be on vacation but also he can add a room in its home or add a plant to a room.
