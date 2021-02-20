@@ -932,7 +932,7 @@ def serve_on_port(port):
 
 class MyHandler(http.server.BaseHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
-        self.mysql = MySQL('../BDD/jeunepousse.db')
+        self.mysql = MySQL('../Database/jeunepousse.db')
         super(MyHandler, self).__init__(*args, **kwargs)
 
     def do_GET(self):
