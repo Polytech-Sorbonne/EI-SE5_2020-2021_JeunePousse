@@ -1,8 +1,11 @@
-![alt text](https://github.com/Polytech-Sorbonne/EI-SE5_2020-2021_JeunePousse/blob/main/Code/Server/Logo_JeunePousse.png)
+![alt text](https://github.com/Polytech-Sorbonne/EI-SE5_2020-2021_JeunePousse/blob/main/Code/Server/Logo_JeunePousse.png "Logo JeunePousse")
+
 # EI-SE5_2020-2021_JeunePousse
 ## SQL database
-This solution is represented in a database as follow
-Entity | attached to 
+
+This solution is represented in a database as follows :
+
+Entity | attached to
 ---|---
 **home**|
 **room**| one home
@@ -26,43 +29,51 @@ Considering that :
 * content the description of a "kit" represented by a name. It includes all the name of sensors and actuators and their unities included in the kit.
 11. plant
 * represents all the content related to a plant located in a room and the kit used to monitor this one. So it contains links to a reference plant, a reference kit and a room
-13. sensor or actuator
-* represents a sensor or actuator which is part of a plant monitoring
+13. sensor
+* represents a sensor which is part of a plant monitoring
 15. measure
-* is one measure of a sensor or actuator
+* is one measure of a sensor
 
-INSERER UML DE LA DATABASE
 
+![alt text](https://github.com/Polytech-Sorbonne/EI-SE5_2020-2021_JeunePousse/blob/main/Code/Datasheets/Database_and_server_flowcharts/UML_Jeunepousse.png "UML of the database")
 
 ## HTTP python server
-The server will have to missions :
-1. genrerating the responsive website pages synchronised with database content
-2. managing posts from modules linked to plants in a home
+The server has two objectives :
+
+1. Generating the responsive website pages synchronised with the database content,
+2. Managing POST requests from modules linked to the plants
 
 ---
 
 ### Website and server
 #### Sign up and sign in
-Before using a module, you need to create an user account. By creating this, you also indicates all the data related to your home including your home's room. After signing up, home, room, and user sql database's tables will be upgraded by the server from the website REST posted data.
+Before using a module, you need to create an user account. By creating this, you will also indicate all the data related to your home including your rooms. After signing up, the tables home, room, and user will be updated by the server from the website REST posted data.
 
-INSERER 1 IMAGE PAGE CONNEXION & 2 IMAGES CREATION COMPTE
+![alt text](https://github.com/Polytech-Sorbonne/EI-SE5_2020-2021_JeunePousse/blob/main/Code/EI-SE5_2020-2021_JeunePousse/Resources/Connexion_page.png "Connexion Page screenshot"
 
-Then, you will be able to connect to your account by indicating your email and password.
+![alt text](https://github.com/Polytech-Sorbonne/EI-SE5_2020-2021_JeunePousse/blob/main/Code/EI-SE5_2020-2021_JeunePousse/Resources/Inscription_partie1.png "Subcription part 1 Page screenshot"
+
+![alt text](https://github.com/Polytech-Sorbonne/EI-SE5_2020-2021_JeunePousse/blob/main/Code/EI-SE5_2020-2021_JeunePousse/Resources/Inscription_partie1.png "Subcription part 1 Page screenshot"
+
+
+Then, you will be able to connect to your account with your email and password.
 
 #### Dashboard page
 
-INSERER IMAGE DASHBOARD
+![alt text](https://github.com/Polytech-Sorbonne/EI-SE5_2020-2021_JeunePousse/blob/main/Code/EI-SE5_2020-2021_JeunePousse/Resources/Dashboard.png "Dashboard"
 
-After connecting, the server handles a REST GET request from the connection website page and it loads your dashboard page by getting your home's room and all the plant in each room from the databse.
-A navigation bar allows the user to move to the option page of to log out. To do this, REST GET requests are send from the navigation bar to the server.
-On the dashboard, the data are organised as follow :
-1. a sidebar menu allow the user to move from home's rooms to an other.
-2. for each room, the server lists for each plant in a room, for all sensors and actuoators linked to a plant its last measure.
-3. an information table also indicates the ideal measures referred to this plant.
+After connecting, the server handles a REST GET request from the connection website page and it loads your dashboard by getting your various rooms and all the plants in each room from the database.
+A navigation bar allows the user to move to the option page and to log out.
+
+On the dashboard, the data are organised as follows :
+
+1. A sidebar menu allowing the user to move from one room to another.
+2. For each room, the server lists for each plant in a room, and for all sensors linked to a plant, their last measurement.
+3. An information table also indicates the ideal values for each particular plant.
 
 #### Option page
 
-INSERER IMAGE OPTION
+![alt text](https://github.com/Polytech-Sorbonne/EI-SE5_2020-2021_JeunePousse/blob/main/Code/EI-SE5_2020-2021_JeunePousse/Resources/Options.png "Options"
 
 The option page offers the user's data :
 * about him
@@ -114,4 +125,3 @@ These are about indications for the module to dispaly on its screen about the te
 
 
 ## Hardware part
-
