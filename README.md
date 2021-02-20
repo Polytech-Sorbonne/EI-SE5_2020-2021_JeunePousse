@@ -35,7 +35,7 @@ Considering that :
 * is one measure of a sensor
 
 
-![alt text](https://github.com/Polytech-Sorbonne/EI-SE5_2020-2021_JeunePousse/blob/main/Datasheets/Database_and_server_flowcharts/UML_Jeunepousse.png "UML of the database")
+![alt text](https://github.com/Polytech-Sorbonne/EI-SE5_2020-2021_JeunePousse/blob/main/Datasheets/Database_and_server_flowcharts/UML_JeunePousse.png "UML of the database")
 
 ## HTTP python server
 The server has two objectives :
