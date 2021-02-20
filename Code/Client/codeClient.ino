@@ -35,8 +35,6 @@ const int PINLED = 13;
 const char *AP_SSID = "SSID";
 const char *AP_PWD = "PWD";
 
-int test = 0;
-
 HTTPClient http;
 
 int delay_time_ms;
@@ -120,12 +118,12 @@ void setup(){
 
   Serial.println(F("Debut programme"));
 
-  
+
   //setup pompe et panneau LED
   pinMode(PINPOMPE, OUTPUT);
   pinMode(PINLED, OUTPUT);
   Serial.println(F("Setup pompe"));
-  
+
   //setup luminosite
   while(!Serial)
   {
@@ -138,16 +136,16 @@ void setup(){
   pinMode(Broche_Echo_1, INPUT);    // Broche Echo_1 en entree
   pinMode(Broche_Echo_2, INPUT);    // Broche Echo_2 en entree
   Serial.println(F("Setup broches"));
-  
+
   //setup Ecran
   print_demarrage();
   Wire.begin();
   Serial.println(F("Setup Ecran"));
-  
+
   //setup sol
   pinMode(SOIL_SENSOR_PIN,INPUT);
   Serial.println(F("Setup Sol"));
-  
+
   //setup pompe
   pinMode(POMPE, OUTPUT);
 
@@ -246,12 +244,12 @@ int post_kit_connexion(){
       String response = http.getString();
       Serial.println(response);
       deserializeJson(resp, response);
-      Serial.println("Deserial");
-      
+
       //on met a jour le port de communication propre a ce systeme
       server_own_portCOM = atoi(resp["PortCOM"]);
       Serial.println(server_own_portCOM);
       http.end();
+      Serial.println("Fin post_kit_connexion");
       return 0;
     }
   }
@@ -259,10 +257,10 @@ int post_kit_connexion(){
 }
 
 StaticJsonDocument<200> send_values(){
-  
+
   StaticJsonDocument<200> doc;
   StaticJsonDocument<200> resp;
-  
+
   if (WiFi.status() == WL_CONNECTED) {
 
     HTTPClient http;
@@ -285,19 +283,18 @@ StaticJsonDocument<200> send_values(){
     Serial.println(requestBody);
     int httpResponseCode = http.POST(requestBody);
     Serial.println(httpResponseCode);
-    test = test + 1;
+
 
     String response = http.getString();
     Serial.println(response);
     deserializeJson(resp, response);
+    //Serial.println(resp);
 
-    //Valeurs renvoyees par le serveur
-    
+    //Valeurs renvoyées par le serveur
+
     mode_auto = resp["mode"];
     delay_time_ms = resp["delay"];
-    
-    Serial.println(mode_auto);
-    Serial.println(delay_time_ms);
+
     if(mode_auto == 1){
       clear_screen();
       delay(3000);
@@ -312,7 +309,7 @@ StaticJsonDocument<200> send_values(){
       lights(resp["light_power"]);
       //Arrose les plantes
       watering(resp["irrig_score"]);
-        
+
     }
     else if(mode_auto == -1){
       display_screen("JeunePousse");
