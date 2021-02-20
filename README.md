@@ -53,7 +53,7 @@ Before using a module, you need to create an user account. By creating this, you
 
 ![alt text](https://github.com/Polytech-Sorbonne/EI-SE5_2020-2021_JeunePousse/blob/main/Resources/Inscription_partie1.png "Subcription part 1 Page screenshot")
 
-![alt text](https://github.com/Polytech-Sorbonne/EI-SE5_2020-2021_JeunePousse/blob/main/Resources/Inscription_partie1.png "Subcription part 1 Page screenshot")
+![alt text](https://github.com/Polytech-Sorbonne/EI-SE5_2020-2021_JeunePousse/blob/main/Resources/Inscription_partie2.png "Subcription part 1 Page screenshot")
 
 
 Then, you will be able to connect to your account with your email and password.
