@@ -15,21 +15,21 @@ Entity | attached to
 
 Considering that :
 1. home
-..* represents a home with its address, IP, number of rooms.
+* represents a home with its address, IP, number of rooms.
 3. room
-..* represents a room in a home with a name.
+* represents a room in a home with a name.
 5. user
-..* represents an user account with a name, an email, a password and linked.
+* represents an user account with a name, an email, a password and linked.
 7. reference plant
-..* content all the data referred to a plant, with its ideal temperature, humidity, luminosity and soil humidity.
+* content all the data referred to a plant, with its ideal temperature, humidity, luminosity and soil humidity.
 9. reference kit
-..* content the description of a "kit" represented by a name. It includes all the name of sensors and actuators and their unities included in the kit.
+* content the description of a "kit" represented by a name. It includes all the name of sensors and actuators and their unities included in the kit.
 11. plant
-..* represents all the content related to a plant located in a room and the kit used to monitor this one. So it contains links to a reference plant, a reference kit and a room
+* represents all the content related to a plant located in a room and the kit used to monitor this one. So it contains links to a reference plant, a reference kit and a room
 13. sensor or actuator
-..* represents a sensor or actuator which is part of a plant monitoring
+* represents a sensor or actuator which is part of a plant monitoring
 15. measure
-..* is one measure of a sensor or actuator
+* is one measure of a sensor or actuator
 
 INSERER UML DE LA DATABASE
 
@@ -38,6 +38,8 @@ INSERER UML DE LA DATABASE
 The server will have to missions :
 1. genrerating the responsive website pages synchronised with database content
 2. managing posts from modules linked to plants in a home
+
+---
 
 ### Website and server
 #### Sign up and sign in
@@ -63,10 +65,10 @@ On the dashboard, the data are organised as follow :
 INSERER IMAGE OPTION
 
 The option page offers the user's data :
-..* about him
-..* of plants home
-..* of plants rooms
-..* of his plants
+* about him
+* of plants home
+* of plants rooms
+* of his plants
 
 As a consequence whren the server received REST GET request defined as getting the option page, it loads all the data mentionned above from the sql database. Moreover, this website page, allows the user to indicates if his attend to be on vacation but also he can add a room in its home or add a plant to a room.
 ##### Changing plants functionnal mode
@@ -91,7 +93,7 @@ When a user get a kit (module composed of a microcontroller, sensors and actuato
 The website is here to display user's modules measures, to aware the user of the ideal constants for his plants, to have a look of the data the sql database have about him. This is also the place where the user can configure a new module he bought. Finally, the only one action that the user can have on its modules is to indicates he will be far from home for a long time (on vacation for example). By indicating this to the website, its modules bahvior will be able to adapt their monitoring to this. The user does not have more to care about. In fact, the server and the modules do everything else for him.
 
 
-
+---
 
 ### Server for plant monitoring
 In addition to website generating, the server also monitor all plants.
