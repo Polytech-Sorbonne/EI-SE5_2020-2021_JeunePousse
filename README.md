@@ -127,3 +127,47 @@ These are about indications for the module to dispaly on its screen about the te
 
 
 ## Hardware part
+### Equipment needed 
+
+Sensors : 
+
+  1. Waterproof capacitive soil moisture sensor  -   Gravity SEN0308  -    
+     https://wiki.dfrobot.com/Waterproof_Capacitive_Soil_Moisture_Sensor_SKU_SEN0308
+
+  2. OLED screen    -   EF03155
+     https://iotbyhvm.ooo/esp32-with-oled-interfacing-oled-with-esp32-using-arduino-ide/
+
+  3. Submersible water pump   -   PM3V
+     https://www.gotronic.fr/pj2-25110-3v-vertical-submersible-water-pump-drawing-2421.pdf
+
+  4. Humidity & temperature sensor X2   -   DHT22
+     https://joy-it.net/files/files/Produkte/SEN-DHT22/Datasheet%20SEN-DHT22.pdf
+
+   5. Distance sensor   -   HC-SR04
+      https://www.gotronic.fr/pj2-guide-us-hc-sr04-compatible-arduino-2309.pdf
+
+   6. Microcontroller    -   ESP32
+      https://nodemcu.readthedocs.io/en/dev-esp32/
+
+   7. Desk Lamp kit X3    -   kitronik 2169
+      https://resources.kitronik.co.uk/pdf/2169-round-5v-led-matrix-kit-essential-information.pdf
+
+   8. Relay X2    -   Grove relay
+      https://wiki.seeedstudio.com/Grove-Relay/
+
+
+You’ll need double ouptut generator (for 9V and 3V) and a bread board.Make sure to have multiple male to female and male to male wires.
+You’ll also need arduino environment, and to set-up your software for an ESP32
+(tutorial → https://randomnerdtutorials.com/installing-the-esp32-board-in-arduino-ide-windows-instructions/)
+Don’t forget a recipient for the water supply and a silicone tube (this model is compatible with the water pump :TS596 )
+
+### Set up 
+Before setting everything up , you’ll need to solder the 3 led kit together (you can choose to solder them in series(9v needed) or in parallel(3V needed)
+
+![alt text](https://github.com/Polytech-Sorbonne/EI-SE5_2020-2021_JeunePousse/blob/main/Resources/schematic.PNG "Schematic")
+
+### Software
+SUITE WALID
+
+
+
