@@ -1,6 +1,10 @@
 ![alt text](https://github.com/Polytech-Sorbonne/EI-SE5_2020-2021_JeunePousse/blob/main/Code/Server/Logo_JeunePousse.png "Logo JeunePousse")
 
 # EI-SE5_2020-2021_JeunePousse
+
+Jeune Pousse is a connected plant pot. Thanks to this pot your plant will be watered and lightened automatically. You'll be able to register you pot online and to add your plant to our website, after registering you'll be able to check the environmental datas of your plant online but also when you approach the pot , all those datas will be printed on the screen : humidity , temperature , soil moisture.
+
+
 ## SQL database
 
 This solution is represented in a database as follows :
