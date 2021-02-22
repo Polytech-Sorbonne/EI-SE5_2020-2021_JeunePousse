@@ -2,7 +2,7 @@
 
 # EI-SE5_2020-2021_JeunePousse
 
-Jeune Pousse is a connected plant pot. Thanks to this pot your plant will be watered and lightened automatically. You'll be able to register you pot online and to add your plant to our website, after registering you'll be able to check the environmental datas of your plant online but also when you approach the pot , all those datas will be printed on the screen : humidity , temperature , soil moisture.
+Jeune Pousse is a connected plant pot. Thanks to this pot your plant will be watered and lightened automatically. You'll be able to register you pot online and to add your plant to our website. After registering you'll be able to check the environmental data of your plant online but also when you approach the pot , all those data will be printed on the screen : humidity , temperature , soil moisture.
 
 
 ## SQL database
