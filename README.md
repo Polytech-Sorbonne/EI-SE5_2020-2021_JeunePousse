@@ -171,7 +171,9 @@ Before setting everything up , you’ll need to solder the 3 led kit together (y
 ![alt text](https://github.com/Polytech-Sorbonne/EI-SE5_2020-2021_JeunePousse/blob/main/Resources/schematic.PNG "Schematic")
 
 ### Software
-SUITE WALID
+Regarding the software part of the different components to carry out this project, we based ourselves on some examples of Arduino code that we found on the internet. We have made sure that our inspirations are easily listed at the start of each sample source code. Some modules require specific connections with pull-up resistors for example. Here again, we have put in the header of the corresponding file a link to web pages where you will find the connections made. However, most of the elements are basic and work in GPIO (with the exception of the screen which works in I2C). All the files that we were inspired by are in the Code/Sensors folder of this project. For sharing sensors, we went there in stages, one sensor after another. We were then able to add the connections to the server after this code. So, in Code/Client, you will find the only file in question.
+
+
 
 ## Vidéo de démonstration 
 https://youtu.be/CFeE0c2MG0o
